@@ -1,0 +1,30 @@
+{
+    "id": "{{activityId}}",
+    "commandLine": "$(engine.path)/3dsmaxbatch.exe -sceneFile \"$(args[InputFile].path)\" \"$(settings[script].path)\"",
+    "description": "Export a single max file to FBX",
+    "appbundles": [
+        "{{nickname}}.{{appId}}+{{appAlias}}"
+    ],
+    "engine" : "{{engineId}}",
+    "parameters": {
+        "InputFile" : {
+            "zip": false,
+            "description": "Input 3ds Max file",
+            "ondemand": false,
+            "required": true,
+            "verb": "get",
+            "localName": "input.max"
+        },
+        "OutputFile": {
+            "zip": false,
+            "ondemand": false,
+            "verb": "put",
+            "description": "Output FBX file",
+            "required": true,
+            "localName": "output.fbx"
+        }
+    },
+    "settings": {
+        "script": "exportFile (sysInfo.currentdir + \"/output.fbx\") #noPrompt using:FBXEXP"
+    }
+}

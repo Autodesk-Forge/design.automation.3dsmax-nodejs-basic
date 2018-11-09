@@ -1,0 +1,19 @@
+{
+  "forge": {
+    "clientId": "TODO setup forge client in dev.default.json",
+    "clientSecret": "TODO setup forge client secret in dev.default.json",
+    "nickname": "TODO setup design automation nickname. If you haven't setup any or don't know what this is, put your client id here",
+    "ossBucketName": "TODO choose an OSS bucket where the inputs and output will be uploaded must be of the form [-_.a-z0-9]{3,128} "
+  },
+  "designAutomation": {
+    "appId": "TutorialExportToFBX",
+    "appAlias": "sample",
+    "activityId": "TutorialExportToFBX",
+    "activityAlias": "sample",
+    "engineId": "Autodesk.3dsMax+2019"
+  },
+  "urls": {
+    "designAutomation": "https://developer.api.autodesk.com/da/us-east/v3"
+  },
+  "timeBetweenPolls": 5000
+}
