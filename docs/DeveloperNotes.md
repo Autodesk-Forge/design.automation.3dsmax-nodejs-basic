@@ -6,16 +6,16 @@ In design automation, appbundle can be used to provide custom code, plugin, scri
 In this sample we provide an appbundle that automatically load a maxscript file on 3ds Max start up. 
  
 The appbundle that is uploaded to design automation must be a zip that contain a folder with a name that finish with ```.bundle```.
-In this folder there should be an xml file name [PackageContents.xml](appBundle/export.bundle/PackageContents.xml).  This file will describe to 3ds Max what to load on start up. For more documentation on this xml file check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
+In this folder there should be an xml file name [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml).  This file will describe to 3ds Max what to load on start up. For more documentation on this xml file check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
 
-In this sample, the [PackageContents.xml](appBundle/export.bundle/PackageContents.xml) file mention that [functions.ms](appBundle/export.bundle/Content/functions.ms) must be loaded as a pre-start-up script.
+In this sample, the [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml) file mention that [functions.ms](../appBundle/export.bundle/Content/functions.ms) must be loaded as a pre-start-up script.
 
 In this script we define a maxscript function ```customMaxscriptFunctionDefinedInAppBundleToExportToFBX``` that contain the logic to export the current scene to FBX.
 
 This function is used inside our activity definition, where we define the 3dsmaxbatch.exe command line to be executed.
 
 The [createAndUploadApp.js](createAndUploadApp.js) create and upload the appbundle following these steps:
-1. Zip the [appbundle/export.bundle](appBundle/export.bundle) folder.
+1. Zip the [../appbundle/export.bundle](../appBundle/export.bundle) folder.
 2. Delete the appbundle versions and alias that might already exist by calling [DELETE appbundles/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-DELETE/).
 3. Create the first version of the appbundle by calling [POST appbundles](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-POST/) using [postApp.hbs](templates/payloads/postApp.hbs) template to generate the body of the request.
 4. Upload the zipped folder from step 1.  To do so, we take the form-data and url from the response received by creating the appbundle in step 3 and we add the field ```file``` where we add the content of the zip file.
