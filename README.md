@@ -77,7 +77,7 @@ and follow the steps:
 	```
 
 # Understanding the sample
-A detailed description of the sample is available in [Docs/DeveloperNotes.md](Docs/DeveloperNotes.md).
+A detailed description of the sample is available in [Docs/DeveloperNotes.md](./docs/DeveloperNotes.md).
 
 
 ## Quotas and Limits
