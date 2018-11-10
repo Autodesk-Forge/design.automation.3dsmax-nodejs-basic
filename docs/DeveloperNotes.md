@@ -50,7 +50,7 @@ Generating signed urls is done following these steps:
 4. Generate the required signed url by calling [POST buckets/:bucketKey/objects/:objectName/signed](https://forge.autodesk.com/en/docs/data/v2/reference/http/buckets-:bucketKey-objects-:objectName-signed-POST/).
 
 ## Sending a workitem
-The workitem is what launch the execution of an activity on design automation. The [executeWorkitem.js](../executeWorkitem.js) script by calling [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) using [postWorkitemExportToFBX.bhs](templates/payloads/postWorkitemExportToFBX.hbs) template to generate the body of the request.
+The workitem is what launch the execution of an activity on design automation. The [executeWorkitem.js](../executeWorkitem.js) script by calling [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) using [postWorkitemExportToFBX.bhs](../templates/payloads/postWorkitemExportToFBX.hbs) template to generate the body of the request.
 
 NOTE: In this sample we wait for the workitem to complete by polling for status using [GET workitems/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-id-GET/) requests.  The prefered way to get notify when a workitem is completed is to register a callback url using the ```onComplete``` argument in the body when sending your [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) request.
 This is a special argument that can be used without being defined in the activity.
