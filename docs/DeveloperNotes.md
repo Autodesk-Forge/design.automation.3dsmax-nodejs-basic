@@ -14,33 +14,33 @@ In this script we define a maxscript function ```customMaxscriptFunctionDefinedI
 
 This function is used inside our activity definition, where we define the 3dsmaxbatch.exe command line to be executed.
 
-The [createAndUploadApp.js](createAndUploadApp.js) create and upload the appbundle following these steps:
+The [createAndUploadApp.js](../createAndUploadApp.js) create and upload the appbundle following these steps:
 1. Zip the [../appbundle/export.bundle](../appBundle/export.bundle) folder.
 2. Delete the appbundle versions and alias that might already exist by calling [DELETE appbundles/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-DELETE/).
-3. Create the first version of the appbundle by calling [POST appbundles](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-POST/) using [postApp.hbs](templates/payloads/postApp.hbs) template to generate the body of the request.
+3. Create the first version of the appbundle by calling [POST appbundles](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-POST/) using [postApp.hbs](../templates/payloads/postApp.hbs) template to generate the body of the request.
 4. Upload the zipped folder from step 1.  To do so, we take the form-data and url from the response received by creating the appbundle in step 3 and we add the field ```file``` where we add the content of the zip file.
-5. Create an alias that point to version 1 of the appbundle by calling [POST appbundles/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-aliases-POST/) using [postAlias.hbs](/templates/payloads/postAlias.hbs) template to generate the body of the request.
+5. Create an alias that point to version 1 of the appbundle by calling [POST appbundles/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-aliases-POST/) using [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
 
-For more details take a look at the ```createApp``` inside [appCreator.js](lib/appCreator.js).
+For more details take a look at the ```createApp``` inside [appCreator.js](../lib/appCreator.js).
 
 Note: In an iterative process, it might be more appropriate to create new versions of your appbundle instead of deleting it every time. This can be done using [POST appbundles/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-versions-GET/).
 
 ## Creating the activity
 In design automation an activity define what need to be executed when sending a workitem.  It also define what appbundle needs to be loaded and what are the parameters that will need to be provided when sending a workitem.
 
-The [createActivity.js](createActivity.js) script create the activity following these steps:
+The [createActivity.js](../createActivity.js) script create the activity following these steps:
 1. Delete the activity versions and alias that might already exist by calling [DELETE activities/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-DELETE/).
-2. Create the first version of the activity by calling [POST activities](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-POST/) using [postActivityExportToFBX.hbs](templates/payloads/postActivityExportToFBX.hbs) template to generate the body of the requests.
-3. Create an alias that point to version 1 of the appbundle by calling [POST activities/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-aliases-POST/) using [postAlias.hbs](/templates/payloads/postAlias.hbs) template to generate the body of the request.
+2. Create the first version of the activity by calling [POST activities](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-POST/) using [postActivityExportToFBX.hbs](../templates/payloads/postActivityExportToFBX.hbs) template to generate the body of the requests.
+3. Create an alias that point to version 1 of the appbundle by calling [POST activities/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-aliases-POST/) using [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
 
-For more detail you can look at the ```createActivity``` function in [activityCreator.js](lib/activityCreator.js).
+For more detail you can look at the ```createActivity``` function in [activityCreator.js](../lib/activityCreator.js).
 
 Note: In an iterative process, it might be more appropriate to create new versions of your activity instead of deleting it every time. This can be done using [POST activities/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-versions-POST/).
 
 ## Object Storage Service (OSS)
 When sending a workitem, we will need to provide urls to download the inputs and uploads the output specified in the activity.
 
-The [executeWorkitem.js](executeWorkitem.js) script, manage the upload of input 3ds Max file from your local machine to OSS.
+The [executeWorkitem.js](../executeWorkitem.js) script, manage the upload of input 3ds Max file from your local machine to OSS.
 It also manage the creation of signed urls that will be used for the arguments when sending the workitem.
 
 Generating signed urls is done following these steps:
@@ -50,7 +50,7 @@ Generating signed urls is done following these steps:
 4. Generate the required signed url by calling [POST buckets/:bucketKey/objects/:objectName/signed](https://forge.autodesk.com/en/docs/data/v2/reference/http/buckets-:bucketKey-objects-:objectName-signed-POST/).
 
 ## Sending a workitem
-The workitem is what launch the execution of an activity on design automation. The [executeWorkitem.js](executeWorkitem.js) script by calling [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) using [postWorkitemExportToFBX.bhs](templates/payloads/postWorkitemExportToFBX.hbs) template to generate the body of the request.
+The workitem is what launch the execution of an activity on design automation. The [executeWorkitem.js](../executeWorkitem.js) script by calling [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) using [postWorkitemExportToFBX.bhs](templates/payloads/postWorkitemExportToFBX.hbs) template to generate the body of the request.
 
 NOTE: In this sample we wait for the workitem to complete by polling for status using [GET workitems/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-id-GET/) requests.  The prefered way to get notify when a workitem is completed is to register a callback url using the ```onComplete``` argument in the body when sending your [POST workitems](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/workitems-POST/) request.
 This is a special argument that can be used without being defined in the activity.
@@ -66,4 +66,4 @@ Here is an example of how to use the onComplete argument:
     }
 ```
 ## Downloading result
-The resulting FBX file should be downloaded back from OSS in the ```Results``` folder. This folder will get created if it doesn't exist.  The file will be named with the jobId which can be found the in console output when running [executeWorkitem.js](executeWorkitem.js). 
+The resulting FBX file should be downloaded back from OSS in the ```Results``` folder. This folder will get created if it doesn't exist.  The file will be named with the jobId which can be found the in console output when running [executeWorkitem.js](../executeWorkitem.js). 
