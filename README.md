@@ -32,7 +32,9 @@ This sample contains 3 scripts that demonstrate how Design Automation can be lev
 ## Running locally
 
 1. Register for a Forge application at https://forge.autodesk.com/myapps/create#. You'll need the key and secret for building and running any sample apps
-    * Choose *Design Automation API* and *UDP API* for the APIs you want to use in your app.
+    * Choose *Design Automation API V3* and *Data Management API* for the APIs you want to use in your app.
+    ![](./forgeAPIs.png)
+    
 ### Setup Config file
 Inside the /config folder you will need to create a file named ```dev.default.json```.
 
