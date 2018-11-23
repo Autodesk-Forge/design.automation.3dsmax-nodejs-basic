@@ -32,7 +32,7 @@ class ExportToFBXRunner extends workItemRunnerAbstract {
      * @param jobId {String} job run unique identifier
      * @private
      */
-    _getWorkItemPayload(jobId, callback) {
+    _getWorkItemPayload(jobId, nickname, callback) {
         const self = this;
         let inputUrl;
 
@@ -47,7 +47,7 @@ class ExportToFBXRunner extends workItemRunnerAbstract {
                 function resolveTemplate(url, next)
                 {
                     const resolvedTemplate = postWorkItemTemplate({
-                        activityId: self.nickname + '.' + self.activityId + '+' + self.activityAlias,
+                        activityId: nickname + '.' + self.activityId + '+' + self.activityAlias,
                         inputUrl: inputUrl,
                         outputUrl: url
                     });

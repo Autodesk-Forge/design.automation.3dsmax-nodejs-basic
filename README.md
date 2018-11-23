@@ -45,7 +45,6 @@ Inside the /config folder you will need to create a file named ```dev.default.js
 	"forge": {
 		"clientId": "Setup your forge client id here",
 		"clientSecret": "Setup your forge client secret here",
-		"nickname": "Setup your forge client id here, unless you have a nickname",
 		"ossBucketName": "Choose a unique OSS bucket name where the inputs and output will be uploaded must be of the form [-_.a-z0-9]{3,128} "
 	}
 }
