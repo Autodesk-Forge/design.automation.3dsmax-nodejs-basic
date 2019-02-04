@@ -3,6 +3,7 @@ const configFile = require('./config');
 const ActivityCreator = require('./lib/activityCreator');
 const fs = require('fs');
 const handlebar = require('handlebars');
+const logger = require('./lib/logger');
 
 const postActivityTemplateFileContent = fs.readFileSync('./templates/payloads/postActivityExportToFBX.hbs', 'utf8');
 const postActivityTemplate = handlebar.compile(postActivityTemplateFileContent);
