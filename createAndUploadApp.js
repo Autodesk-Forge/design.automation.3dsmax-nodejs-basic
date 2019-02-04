@@ -1,6 +1,7 @@
 const AppCreator = require('./lib/appCreator');
 const Authenticator = require('./lib/authenticator');
 const configFile = require('./config/index');
+const logger = require('./lib/logger');
 
 const authenticator = new Authenticator(configFile.forge.clientId, configFile.forge.clientSecret);
 authenticator.getForgeOAuth2TwoLeggedObject((err, forgeOAuth2TwoLegged) => {
