@@ -11,7 +11,7 @@
 ![Intermediate](https://img.shields.io/badge/Level-Basic-green.svg)
 
 
-This sample contains 3 scripts that demonstrate how Design Automation can be leverage to convert a simple 3ds Max file into an FBX file using nodejs. Using this sample, you should be able to:
+This sample contains 3 scripts that demonstrate how Design Automation can be leveraged to convert a simple 3ds Max file into an FBX file using nodejs. Using this sample, you should be able to:
 
 - Create and upload an appbundle
 - Create an activity
@@ -50,8 +50,7 @@ Inside the /config folder you will need to create a file named ```dev.default.js
 }
 ```
  
-3. Open a command prompt inside the javascript/ExportToFBX
-and follow the steps: 
+3. Open a command prompt in the repo's root folder and follow these steps: 
 
 - Install the npm packages by running: 
 	
