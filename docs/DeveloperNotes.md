@@ -5,12 +5,14 @@ In design automation, an appbundle can be used to provide custom code, plugins, 
 
 In this sample we provide an appbundle that automatically loads a maxscript file on 3ds Max start up. 
  
-The appbundle that is uploaded to design automation must be a zip that contains a folder with a name that ends with ```.bundle```.
-In this folder there should be an xml file named [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml).  This file will describe to 3ds Max what to load on start up. For more information about this xml file fomat check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
+The appbundle that is uploaded to design automation must be a zip that contains a folder at the root of the zip.
+This folder must contain an xml file named [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml).  
+This file will describe to 3ds Max what to load on start up. 
+For more information about this xml file fomat check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
 
 In this sample, the [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml) file specifies that [functions.ms](../appBundle/export.bundle/Content/functions.ms) must be loaded as a pre-start-up script.
 
-In this script we define a maxscript function ```customMaxscriptFunctionDefinedInAppBundleToExportToFBX``` that contains the logic to export the current scene to FBX.
+In this script we define a maxscript function ```helloFromAppBundleScript``` that contains a maxscript instruction that will print the following string in workitem report "Hello from app bundle!".
 
 This function is used inside our activity definition, where we define the 3dsmaxbatch.exe command line to be executed.
 
