@@ -23,8 +23,6 @@ The [createAndUploadApp.js](../createAndUploadApp.js) creates and uploads the ap
 4. Upload the zipped folder from step 1.  To do so, we take the form-data and url from the response received by creating the appbundle in step 3 and we add the field ```file``` where we add the content of the zip file.
 5. Create an alias that points to version 1 of the appbundle by calling [POST appbundles/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-aliases-POST/) using the [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
 
-For more details take a look at the ```createApp``` inside [appCreator.js](../lib/appCreator.js).
-
 Note: In an iterative process, it might be more appropriate to create new versions of your appbundle instead of deleting it every time. This can be done using [POST appbundles/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-versions-GET/).
 
 ## Creating the activity
@@ -34,8 +32,6 @@ The [createActivity.js](../createActivity.js) script create the activity followi
 1. Delete the activity versions and alias that might already exist by calling [DELETE activities/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-DELETE/).
 2. Create the first version of the activity by calling [POST activities](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-POST/) using [postActivityExportToFBX.hbs](../templates/payloads/postActivityExportToFBX.hbs) template to generate the body of the requests.
 3. Create an alias that points to version 1 of the appbundle by calling [POST activities/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-aliases-POST/) using [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
-
-For more detail you can look at the ```createActivity``` function in [activityCreator.js](../lib/activityCreator.js).
 
 Note: In an iterative process, it might be more appropriate to create new versions of your activity instead of deleting it every time. This can be done using [POST activities/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-versions-POST/).
 
