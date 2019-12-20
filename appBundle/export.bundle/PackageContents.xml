@@ -2,7 +2,8 @@
 <ApplicationPackage SchemaVersion="1.0"
 					AutodeskProduct="3ds Max"
 					ProductType="Application"
-					ProductCode="Simple export to FBX">
+					ProductCode="Simple export to FBX"
+                    UpgradeCode="My UpgradeCode">
 <CompanyDetails />
 	<Components Description="pre-start-up scripts parts">
 		<RuntimeRequirements OS="Win64" Platform="3ds Max" SeriesMin="2018" SeriesMax="2020" />
