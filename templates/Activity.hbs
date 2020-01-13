@@ -1,6 +1,6 @@
 {
     "id": "{{activityId}}",
-    "commandLine": "$(engine.path)/3dsmaxbatch.exe -sceneFile \"$(args[InputFile].path)\" \"$(settings[script].path)\"",
+    "commandLine": "$(engine.path)/3dsmaxbatch.exe -v 5 -sceneFile \"$(args[InputFile].path)\" \"$(settings[script].path)\"",
     "description": "Export a single max file to FBX",
     "appbundles": [
         "{{nickname}}.{{appId}}+{{appAlias}}"
@@ -25,6 +25,6 @@
         }
     },
     "settings": {
-        "script": "exportFile (sysInfo.currentdir + \"/output.fbx\") #noPrompt using:FBXEXP"
+        "script": "helloFromAppBundleScript(); exportFile (sysInfo.currentdir + \"/output.fbx\") #noPrompt using:FBXEXP"
     }
 }

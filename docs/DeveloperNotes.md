@@ -5,12 +5,14 @@ In design automation, an appbundle can be used to provide custom code, plugins, 
 
 In this sample we provide an appbundle that automatically loads a maxscript file on 3ds Max start up. 
  
-The appbundle that is uploaded to design automation must be a zip that contains a folder with a name that ends with ```.bundle```.
-In this folder there should be an xml file named [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml).  This file will describe to 3ds Max what to load on start up. For more information about this xml file fomat check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
+The appbundle that is uploaded to design automation must be a zip that contains a folder at the root of the zip.
+This folder must contain an xml file named [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml).  
+This file will describe to 3ds Max what to load on start up. 
+For more information about this xml file fomat check [here](https://help.autodesk.com/view/3DSMAX/2019/ENU/?guid=__developer_writing_plug_ins_packaging_plugins_packagexml_format_html).
 
 In this sample, the [PackageContents.xml](../appBundle/export.bundle/PackageContents.xml) file specifies that [functions.ms](../appBundle/export.bundle/Content/functions.ms) must be loaded as a pre-start-up script.
 
-In this script we define a maxscript function ```customMaxscriptFunctionDefinedInAppBundleToExportToFBX``` that contains the logic to export the current scene to FBX.
+In this script we define a maxscript function ```helloFromAppBundleScript``` that contains a maxscript instruction that will print the following string in workitem report "Hello from app bundle!".
 
 This function is used inside our activity definition, where we define the 3dsmaxbatch.exe command line to be executed.
 
@@ -21,8 +23,6 @@ The [createAndUploadApp.js](../createAndUploadApp.js) creates and uploads the ap
 4. Upload the zipped folder from step 1.  To do so, we take the form-data and url from the response received by creating the appbundle in step 3 and we add the field ```file``` where we add the content of the zip file.
 5. Create an alias that points to version 1 of the appbundle by calling [POST appbundles/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-aliases-POST/) using the [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
 
-For more details take a look at the ```createApp``` inside [appCreator.js](../lib/appCreator.js).
-
 Note: In an iterative process, it might be more appropriate to create new versions of your appbundle instead of deleting it every time. This can be done using [POST appbundles/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/appbundles-id-versions-GET/).
 
 ## Creating the activity
@@ -32,8 +32,6 @@ The [createActivity.js](../createActivity.js) script create the activity followi
 1. Delete the activity versions and alias that might already exist by calling [DELETE activities/:id](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-DELETE/).
 2. Create the first version of the activity by calling [POST activities](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-POST/) using [postActivityExportToFBX.hbs](../templates/payloads/postActivityExportToFBX.hbs) template to generate the body of the requests.
 3. Create an alias that points to version 1 of the appbundle by calling [POST activities/:id/aliases](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-aliases-POST/) using [postAlias.hbs](../templates/payloads/postAlias.hbs) template to generate the body of the request.
-
-For more detail you can look at the ```createActivity``` function in [activityCreator.js](../lib/activityCreator.js).
 
 Note: In an iterative process, it might be more appropriate to create new versions of your activity instead of deleting it every time. This can be done using [POST activities/:id/versions](https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/activities-id-versions-POST/).
 
