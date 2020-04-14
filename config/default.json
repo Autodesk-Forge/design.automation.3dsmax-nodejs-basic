@@ -9,7 +9,7 @@
     "appAlias": "sample",
     "activityId": "TutorialExportToFBX",
     "activityAlias": "sample",
-    "engineId": "Autodesk.3dsMax+2020"
+    "engineId": "Autodesk.3dsMax+2021"
   },
   "urls": {
     "designAutomation": "https://developer.api.autodesk.com/da/us-east/v3"

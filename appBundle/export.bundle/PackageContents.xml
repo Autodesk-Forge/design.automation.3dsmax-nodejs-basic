@@ -6,7 +6,7 @@
                     UpgradeCode="My UpgradeCode">
 <CompanyDetails />
 	<Components Description="pre-start-up scripts parts">
-		<RuntimeRequirements OS="Win64" Platform="3ds Max" SeriesMin="2018" SeriesMax="2020" />
+		<RuntimeRequirements OS="Win64" Platform="3ds Max" SeriesMin="2018" SeriesMax="2021" />
 		<ComponentEntry AppName="Export-FBX-Scripts" Version="1.0.0"  ModuleName="./Content/functions.ms" />
 	</Components>
 </ApplicationPackage>
